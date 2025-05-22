@@ -1,15 +1,22 @@
-const characters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9","~","`","!","@","#","$","%","^","&","*","(",")","_","-","+","=","{","[","}","]",",","|",":",";","<",">",".","?",
-"/"];
+const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".split("");
+const numbers = "0123456789".split("");
+const specials = "~`!@#$%^&*()_-+=[]{},|:;<>.?/".split("");
 
-function getRandomCharacter(){
-    let randomIndex = Math.floor(Math.random() * characters.length);
-    return characters[randomIndex];
+function getRandomCharacter(array){
+    return array[Math.floor(Math.random() * array.length)];
 }
 function generate(){
     const lengthInput = document.getElementById("length").value;
+    const includeNumbers = document.getElementById("include-numbers").checked;
+    const includeSpecials = document.getElementById("include-specials").checked;
+
+    let availableCharacters = [...letters];
+    if (includeNumbers) availableCharacters = availableCharacters.concat(numbers);
+    if (includeSpecials) availableCharacters = availableCharacters.concat(specials);
+    
     let randomPassword = "";
     for  (i = 0; i < lengthInput; ++i){
-        randomPassword += getRandomCharacter();
+        randomPassword += getRandomCharacter(availableCharacters);
     }
     return randomPassword;
 }

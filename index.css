@@ -128,3 +128,7 @@ label {
 .tooltiptext{
     visibility: hidden;
 }
+
+#include-numbers, #include-specials {
+    margin-top: 15px;
+}
