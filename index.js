@@ -8,9 +8,11 @@ function getRandomCharacter(array){
 function generate(){
     const lengthInput = document.getElementById("length").value;
     const includeNumbers = document.getElementById("include-numbers").checked;
+    const includeCharaters = document.getElementById("include-char").checked;
     const includeSpecials = document.getElementById("include-specials").checked;
+    let availableCharacters;
+    if (includeCharaters) availableCharacters = [...letters];
 
-    let availableCharacters = [...letters];
     if (includeNumbers) availableCharacters = availableCharacters.concat(numbers);
     if (includeSpecials) availableCharacters = availableCharacters.concat(specials);
     
